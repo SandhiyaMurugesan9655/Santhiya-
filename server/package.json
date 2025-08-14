@@ -1,0 +1,28 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "start": "pm2 start index.js --output d:/Learning/test/server/logs/out.log --error d:/Learning/test/server/logs/error.log",
+    "stop": "pm2 stop index",
+    "restart": "pm2 restart index",
+    "logs": "pm2 logs index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "csvtojson": "^2.0.10",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "mongoose": "^8.17.1",
+    "multer": "^2.0.2",
+    "node-cron": "^4.2.1",
+    "nodemailer": "^7.0.5",
+    "pm2": "^6.0.8",
+    "xlsx": "^0.18.5"
+  }
+}

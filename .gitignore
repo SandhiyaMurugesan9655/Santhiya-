@@ -9,6 +9,9 @@ Package-lock.json
 
 */Package-lock.json
 */.env
+client/.env
+server/.env
+
 # Logs
 logs
 *.log

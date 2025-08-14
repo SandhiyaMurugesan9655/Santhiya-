@@ -4,6 +4,11 @@ client/node_modules/
 server/node_modules/
 */node_modules/
 
+Package-lock.json 
+.env
+
+*/Package-lock.json
+*/.env
 # Logs
 logs
 *.log
@@ -22,8 +27,8 @@ pnpm-debug.log*
 # Build outputs
 dist/
 build/
-client/build/
-server/dist/
+*/build/
+*/dist/
 
 # OS files
 .DS_Store

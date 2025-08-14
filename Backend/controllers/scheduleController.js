@@ -1,5 +1,4 @@
 
-// Handles scheduling messages
 exports.scheduleMessage = async (req, res) => {
     try {
         const { email, message, scheduledFor } = req.body;

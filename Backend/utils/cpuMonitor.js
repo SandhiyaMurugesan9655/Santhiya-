@@ -16,7 +16,6 @@ function getCpuUsage() {
 setInterval(() => {
     const usage = getCpuUsage();
     if (usage > 70) {
-        console.warn(`High CPU usage detected: ${usage}%. Restarting server with PM2...`);
         pm2.connect(err => {
             if (err) return console.error('PM2 connect error:', err);
             pm2.restart('backend', err2 => {
@@ -25,4 +24,4 @@ setInterval(() => {
             });
         });
     }
-}, 10000); // check every 10 seconds
+}, 10000); 

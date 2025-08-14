@@ -1,11 +1,9 @@
 
-// Handles aggregation of policies per user
 exports.aggregatePolicies = async (req, res) => {
     try {
         const User = require('../models/User');
         const Policy = require('../models/Policy');
 
-        // Aggregate number of policies per user
         const aggregation = await Policy.aggregate([
             {
                 $group: {

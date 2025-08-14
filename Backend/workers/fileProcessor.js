@@ -20,7 +20,6 @@ async function processFile(filePath) {
 (async () => {
     try {
         let result = await processFile(workerData.filePath);
-        // Map CSV columns to expected schema fields
         result = result.map(row => ({
             ...row,
             first_name: row.first_name || row.firstname,

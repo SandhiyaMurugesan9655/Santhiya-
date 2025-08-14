@@ -15,7 +15,6 @@ exports.uploadFile = async (req, res) => {
     worker.on('message', async (msg) => {
         if (msg.success) {
             try {
-                // Lazy load models to avoid circular dependencies
                 const User = require('../models/User');
                 const Policy = require('../models/Policy');
                 const PolicyCarrier = require('../models/PolicyCarrier');
@@ -23,7 +22,6 @@ exports.uploadFile = async (req, res) => {
 
                 let inserted = 0;
                 for (const row of msg.data) {
-                    // Upsert User
                     let user = await User.findOne({ email: row.email });
                     if (!user) {
                         user = await User.create({
@@ -39,19 +37,16 @@ exports.uploadFile = async (req, res) => {
                         });
                     }
 
-                    // Upsert Carrier
                     let carrier = await PolicyCarrier.findOne({ company_name: row.company_name });
                     if (!carrier) {
                         carrier = await PolicyCarrier.create({ company_name: row.company_name });
                     }
 
-                    // Upsert Category
                     let category = await PolicyCategory.findOne({ category_name: row.category_name });
                     if (!category) {
                         category = await PolicyCategory.create({ category_name: row.category_name });
                     }
 
-                    // Upsert Policy (by policy_number)
                     let policy = await Policy.findOne({ policy_number: row.policy_number });
                     if (!policy) {
                         await Policy.create({

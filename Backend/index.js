@@ -18,7 +18,6 @@ const app = express();
 app.use(cors({ origin: process.env.FRONTEND_URL }));
 app.use(express.json());
 
-// Test route to generate an error for log testing
 app.get('/test-error', (req, res, next) => {
     throw new Error('This is a test error for PM2 error log');
 });

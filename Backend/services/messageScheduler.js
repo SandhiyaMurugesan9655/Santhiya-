@@ -3,7 +3,6 @@ const ScheduledMessage = require('../models/ScheduledMessage');
 const User = require('../models/User');
 const sendEmail = require('../utils/sendEmail');
 
-// Run every minute
 cron.schedule('* * * * *', async () => {
     const now = new Date();
     const messages = await ScheduledMessage.find({

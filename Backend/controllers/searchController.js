@@ -1,5 +1,4 @@
 
-// Handles searching policy info by username
 exports.searchByUsername = async (req, res) => {
     try {
         const { username } = req.query;
@@ -11,13 +10,11 @@ exports.searchByUsername = async (req, res) => {
         const PolicyCarrier = require('../models/PolicyCarrier');
         const PolicyCategory = require('../models/PolicyCategory');
 
-        // Find user by first_name (case-insensitive)
         const user = await User.findOne({ first_name: { $regex: `^${username}$`, $options: 'i' } });
         if (!user) {
             return res.status(404).json({ message: 'User not found.' });
         }
 
-        // Find policies for this user
         const policies = await Policy.find({ user: user._id })
             .populate('carrier', 'company_name')
             .populate('category', 'category_name');
